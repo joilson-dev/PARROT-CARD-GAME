@@ -1,0 +1,19 @@
+/* Reset styles */
+@import url('reset.css');
+
+/* Component styles */
+@import url('components/header.css');
+@import url('components/card.css');
+
+/* Additional styles*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #EEF9BF;
+    color: #75B79E;
+}
