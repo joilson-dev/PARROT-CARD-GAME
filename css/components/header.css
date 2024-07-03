@@ -1,0 +1,26 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    margin-bottom: 47px;
+    margin-top: 40px;
+}
+
+header h1 {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 65.63px;
+    letter-spacing: -0.004em;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 42.19px;
+        letter-spacing: -0.004em;
+        text-align: center;
+    }
+}
