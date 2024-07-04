@@ -54,5 +54,32 @@ function eventClick(card) {
     indexClick1Card = card;
   } else {
     indexClick2Card = card;
+    checkMatch();
+  }
+}
+
+function checkMatch() {
+  let firstIndex = indexClick1Card.getAttribute('data-index');
+  let secondIndex = indexClick2Card.getAttribute('data-index');
+
+  if (cards[firstIndex].pair === cards[secondIndex].pair) {
+    indexClick1Card = null;
+    indexClick2Card = null;
+    checkVictory();
+  } else {
+    setTimeout(() => {
+      indexClick1Card.classList.remove('turn-card');
+      indexClick2Card.classList.remove('turn-card');
+      indexClick1Card = null;
+      indexClick2Card = null;
+    }, 1000);
+  }
+}
+
+function checkVictory() {
+  if (document.querySelectorAll('.card:not(.turn-card)').length === 0) {
+    setTimeout(() => {
+      alert(`Você ganhou em ${moves} jogadas!`);
+    }, 500);
   }
 }
