@@ -1,10 +1,14 @@
 let cardsQuantity;
 let cards = [];
 
-while (isNaN(cardsQuantity) || cardsQuantity < 4 || cardsQuantity > 14 || cardsQuantity % 2 !== 0) {
-  let input = prompt('Quantas cartas deseja jogar? Insira um número entre 4 e 14');
-  cardsQuantity = parseInt(input);
-  console.log(cardsQuantity)
+function askCardsQuantity() {
+  while (true) {
+    let input = prompt('Quantas cartas deseja jogar? Insira um número entre 4 e 14, apenas números pares');
+    cardsQuantity = parseInt(input);
+    if (!isNaN(cardsQuantity) && cardsQuantity >= 4 && cardsQuantity <= 14 && cardsQuantity % 2 === 0) {
+      break;
+    }
+  }
 }
 
 function createCards() {
@@ -80,6 +84,24 @@ function checkVictory() {
   if (document.querySelectorAll('.card:not(.turn-card)').length === 0) {
     setTimeout(() => {
       alert(`Você ganhou em ${moves} jogadas!`);
+      resetGame();
     }, 500);
   }
 }
+
+function resetGame() {
+  cardsQuantity = 0;
+  cards = [];
+  indexClick1Card = null;
+  indexClick2Card = null;
+  moves = 0;
+  askCardsQuantity();
+  createCards();
+  shuffleCards(cards);
+  renderCards(cards);
+}
+
+askCardsQuantity();
+createCards();
+shuffleCards(cards);
+renderCards(cards);
